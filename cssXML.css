@@ -1,0 +1,78 @@
+#addButton:hover 
+{
+    color:blue;
+    font-size: 10pt;
+	cursor: pointer;
+}
+
+#downloadButton:hover
+{
+    color:blue;
+    font-size: 10pt;
+	cursor: pointer;
+}
+
+#saveButton:hover
+{
+    color:MediumBlue;
+    font-size: 10pt;
+	cursor: pointer;
+}
+
+#canselButton:hover
+{
+    color: blue;
+    font-size: 10pt;
+	cursor: pointer;
+}
+
+#DeleteButton 
+{
+    font-size: 11pt;
+	font-family:arial, monospace;
+    padding:3px 11px; 
+    border:9 none; 
+    -webkit-border-radius: 5px;
+    border-radius: 100px;
+}
+
+#DeleteButton:hover 
+{
+    font-size: 11pt;
+    color:red;
+	cursor: pointer;
+}
+
+
+body
+{
+    background: url(blue3.jpg);
+	color: white;
+
+}
+
+input#text
+{
+    background: #a58769;
+}
+
+
+input[type=button]  
+{
+  font-family:arial, monospace;
+  padding:3px 11px; 
+  border:9 none; 
+  cursor: default;
+  -webkit-border-radius: 5px;
+  border-radius: 60px;
+  background-color: silver;
+}
+
+a
+{
+    font-weight: bold;
+    font-style:italic;
+    cursor: pointer;
+    font-size: 11pt;
+	color: blue;
+}

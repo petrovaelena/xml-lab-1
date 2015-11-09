@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="workXML2.js"></script>
+    <link rel="stylesheet" type="text/css" href="cssXML.css">
+    <title>lab_1</title> <h3> <center> Лабораторная работа №1 <center/> </h3>
+	</head>
+<body>
+    <div><div id="Content"></div>        
+	    <p>
+			<center>
+            <input type="button"id="addButton" onclick="AddButtonParam()" value=" Добавить " >					
+            <input type="button" id="downloadButton" onclick="downloadXMLFILE('output.xml', 'xml/plain')" value=" Сохранить ">
+            <a href="" class="hidden" id="linkToTheFile" hidden = "hidden"></a>
+			</center>
+        </p>
+		<center>
+        <form id="NewParameter" hidden = "hidden">
+            <p>Id: <input id="NewId" type="text" placeholder="Id" >
+            Название: <input id="NewName" type="text" placeholder="Название">
+            Описание: <input id="NewDescription" type="text" placeholder="Описание">
+            Тип: <select id="NewType" name="ComboBox" onchange="changeTypeOfComboBox()">
+                    <option value="0">Строка</option>
+                    <option value="1">Число</option>
+                    <option value="2">Да/Нет</option>
+                   </select>
+            Значение: <input id="NewValue" type="text" placeholder="Значение"></p>
+            <a><input type="button" id="saveButton" onclick="SaveButtonParam()" value="Добавить строку">  
+			<input type="button" id="canselButton" onclick="CanselButtonParam()" value="Отмена"></a>
+        </form>
+		</center>
+    </div>
+  
+</body>
+</html>
