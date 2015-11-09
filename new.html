@@ -11,24 +11,24 @@
     <div><div id="Content"></div>        
 	    <p>
 			<center>
-            <input type="button"id="addButton" onclick="AddButtonParam()" value=" Äîáàâèòü " >					
-            <input type="button" id="downloadButton" onclick="downloadXMLFILE('output.xml', 'xml/plain')" value=" Ñîõðàíèòü ">
+            <input type="button"id="addButton" onclick="AddButtonParam()" value=" Добавить " >					
+            <input type="button" id="downloadButton" onclick="downloadXMLFILE('output.xml', 'xml/plain')" value=" Сохранить ">
             <a href="" class="hidden" id="linkToTheFile" hidden = "hidden"></a>
 			</center>
         </p>
 		<center>
         <form id="NewParameter" hidden = "hidden">
             <p>Id: <input id="NewId" type="text" placeholder="Id" >
-            Íàçâàíèå: <input id="NewName" type="text" placeholder="Íàçâàíèå">
-            Îïèñàíèå: <input id="NewDescription" type="text" placeholder="Îïèñàíèå">
-            Òèï: <select id="NewType" name="ComboBox" onchange="changeTypeOfComboBox()">
-                    <option value="0">Ñòðîêà</option>
-                    <option value="1">×èñëî</option>
-                    <option value="2">Äà/Íåò</option>
+            Название: <input id="NewName" type="text" placeholder="Название">
+            Описание: <input id="NewDescription" type="text" placeholder="Описание">
+            Тип: <select id="NewType" name="ComboBox" onchange="changeTypeOfComboBox()">
+                    <option value="0">Строка</option>
+                    <option value="1">Число</option>
+                    <option value="2">Да/Нет</option>
                    </select>
-            Çíà÷åíèå: <input id="NewValue" type="text" placeholder="Çíà÷åíèå"></p>
-            <a><input type="button" id="saveButton" onclick="SaveButtonParam()" value="Äîáàâèòü ñòðîêó">  
-			<input type="button" id="canselButton" onclick="CanselButtonParam()" value="Îòìåíà"></a>
+            Значение: <input id="NewValue" type="text" placeholder="Çíà÷åíèå"></p>
+            <a><input type="button" id="saveButton" onclick="SaveButtonParam()" value="Добавить строку">  
+			<input type="button" id="canselButton" onclick="CanselButtonParam()" value="Отмена"></a>
         </form>
 		</center>
     </div>
