@@ -32,7 +32,7 @@ function parsingXMLfile(xmlDocumentEx){
  
 //The function that printed downloading text from the file and generates output string to html.
 // @param - field - element from downloading text
-// Button "Удалить" - ID - Название - Описание.
+// Button "РЈРґР°Р»РёС‚СЊ" - ID - РќР°Р·РІР°РЅРёРµ - РћРїРёСЃР°РЅРёРµ.
 function paramPrinting(field){
     var elemOfHTML = document.createElement("p");
     elemOfHTML.setAttribute("class", "Parameter");
@@ -44,16 +44,16 @@ function paramPrinting(field){
     document.getElementById("Content").appendChild(elemOfHTML);
 	// generate to html type and value from xml file -> paramTypeValue()
     var paramtype = paramTypeValue(field.type, field.value);
-    var outputSTRING = "<a id=\"DeleteButton\" onclick=\'DeleteButtonParam(this.parentNode)\'/>Удалить</a>";
-    outputSTRING += "     Id: ".bold() + field.id + "; Название: ".bold() + field.name
-                            + "; Описание: ".bold() + field.description + paramtype + "</br>";
+    var outputSTRING = "<a id=\"DeleteButton\" onclick=\'DeleteButtonParam(this.parentNode)\'/>РЈРґР°Р»РёС‚СЊ</a>";
+    outputSTRING += "     Id: ".bold() + field.id + "; РќР°Р·РІР°РЅРёРµ: ".bold() + field.name
+                            + "; РћРїРёСЃР°РЅРёРµ: ".bold() + field.description + paramtype + "</br>";
     elemOfHTML.innerHTML = outputSTRING;
 }
 
 //The function that return generated output string to html with type and value from xml file.
 //@param type and value of parameter.
 function paramTypeValue(type, value){
-    var stringwithValue = "; Тип: ".bold() + type + "; Значение: ".bold();
+    var stringwithValue = "; РўРёРї: ".bold() + type + "; Р—РЅР°С‡РµРЅРёРµ: ".bold();
     switch (type)
     {   case 'String':
             if (value === "")
@@ -90,21 +90,17 @@ function setelementValue(child_node, parent_node, is_this_number){
     }
 }
 
-//The function for button "Добавить" that activated by pressing it.
-function AddButtonParam(){
-    document.getElementById("NewParameter").hidden = false;
-    document.getElementById("addButton").hidden = "hidden";
-    document.getElementById("downloadButton").hidden = "hidden";
+// The function that checked number from field of html
+function checkForNumber(field){
+    var exp = new RegExp("(^([+-]?)([1-9]+?)[0-9]*$)|^0$");
+    if (!exp.test(field.value))
+    {
+        alert("It's not a number!");
+        field.value = field.getAttribute("value");
+    }
 }
 
-// The function for button "Отмена" that activated by pressing it.
-function CanselButtonParam(){
-    document.getElementById("NewParameter").hidden = "hidden";
-    document.getElementById("addButton").hidden = false;
-    document.getElementById("downloadButton").hidden = false;
-}
-
-//The function for button "Сохранить" that activated by pressing it.
+//The function for button "РЎРѕС…СЂР°РЅРёС‚СЊ" that activated by pressing it.
 // It saved new parameters (new id, new name, new description, new type and new value, and printing them or cancelling it all.
 function SaveButtonParam(){
     var form = document.getElementById("NewParameter")
@@ -193,6 +189,35 @@ function changeTypeOfComboBox(){
     }
 }
 
+// The function that downloaded the output XML file  with link 
+function downloadXMLFILE(fileName, type){
+    var text = generatingXMLFILE();
+    var file = new Blob([text], { type: type });
+    var linkToTheFile = document.getElementById("linkToTheFile");
+    linkToTheFile.href = URL.createObjectURL(file);
+    linkToTheFile.download = fileName;
+    document.getElementById('linkToTheFile').click();
+}
+
+// The function that delete string with parameters 
+function DeleteButtonParam(child_node){
+    child_node.parentNode.removeChild(child_node);
+}
+
+//The function for button "Р”РѕР±Р°РІРёС‚СЊ" that activated by pressing it.
+function AddButtonParam(){
+    document.getElementById("NewParameter").hidden = false;
+    document.getElementById("addButton").hidden = "hidden";
+    document.getElementById("downloadButton").hidden = "hidden";
+}
+
+// The function for button "РћС‚РјРµРЅР°" that activated by pressing it.
+function CanselButtonParam(){
+    document.getElementById("NewParameter").hidden = "hidden";
+    document.getElementById("addButton").hidden = false;
+    document.getElementById("downloadButton").hidden = false;
+}
+
 // The function that generate XML file as writing new document with parameters
 function generatingXMLFILE(){
     var fieldxml = document.getElementById("Content").getElementsByTagName("p");
@@ -210,29 +235,4 @@ function generatingXMLFILE(){
         stringXML += "</Parameter>";}
         stringXML += "</Parameters>";
     return stringXML;
-}
-
-// The function that downloaded the output XML file  with link 
-function downloadXMLFILE(fileName, type){
-    var text = generatingXMLFILE();
-    var file = new Blob([text], { type: type });
-    var linkToTheFile = document.getElementById("linkToTheFile");
-    linkToTheFile.href = URL.createObjectURL(file);
-    linkToTheFile.download = fileName;
-    document.getElementById('linkToTheFile').click();
-}
-
-// The function that delete string with parameters 
-function DeleteButtonParam(child_node){
-    child_node.parentNode.removeChild(child_node);
-}
-
-// The function that checked number from field of html
-function checkForNumber(field){
-    var exp = new RegExp("(^([+-]?)([1-9]+?)[0-9]*$)|^0$");
-    if (!exp.test(field.value))
-    {
-        alert("It's not a number!");
-        field.value = field.getAttribute("value");
-    }
 }
