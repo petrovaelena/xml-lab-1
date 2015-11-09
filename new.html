@@ -5,30 +5,30 @@
     <meta charset="utf-8" />
     <script type="text/javascript" src="workXML2.js"></script>
     <link rel="stylesheet" type="text/css" href="cssXML.css">
-    <title>lab_1</title> <h3> <center> Лабораторная работа №1 <center/> </h3>
+    <title>lab_1</title> <h3> <center> Р›Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ в„–1 <center/> </h3>
 	</head>
 <body>
     <div><div id="Content"></div>        
 	    <p>
 			<center>
-            <input type="button"id="addButton" onclick="AddButtonParam()" value=" Добавить " >					
-            <input type="button" id="downloadButton" onclick="downloadXMLFILE('output.xml', 'xml/plain')" value=" Сохранить ">
+            <input type="button"id="addButton" onclick="AddButtonParam()" value=" Г„Г®ГЎГ ГўГЁГІГј " >					
+            <input type="button" id="downloadButton" onclick="downloadXMLFILE('output.xml', 'xml/plain')" value=" Г‘Г®ГµГ°Г Г­ГЁГІГј ">
             <a href="" class="hidden" id="linkToTheFile" hidden = "hidden"></a>
 			</center>
         </p>
 		<center>
         <form id="NewParameter" hidden = "hidden">
             <p>Id: <input id="NewId" type="text" placeholder="Id" >
-            Название: <input id="NewName" type="text" placeholder="Название">
-            Описание: <input id="NewDescription" type="text" placeholder="Описание">
-            Тип: <select id="NewType" name="ComboBox" onchange="changeTypeOfComboBox()">
-                    <option value="0">Строка</option>
-                    <option value="1">Число</option>
-                    <option value="2">Да/Нет</option>
+            ГЌГ Г§ГўГ Г­ГЁГҐ: <input id="NewName" type="text" placeholder="ГЌГ Г§ГўГ Г­ГЁГҐ">
+            ГЋГЇГЁГ±Г Г­ГЁГҐ: <input id="NewDescription" type="text" placeholder="ГЋГЇГЁГ±Г Г­ГЁГҐ">
+            Г’ГЁГЇ: <select id="NewType" name="ComboBox" onchange="changeTypeOfComboBox()">
+                    <option value="0">Г‘ГІГ°Г®ГЄГ </option>
+                    <option value="1">Г—ГЁГ±Г«Г®</option>
+                    <option value="2">Г„Г /ГЌГҐГІ</option>
                    </select>
-            Значение: <input id="NewValue" type="text" placeholder="Значение"></p>
-            <a><input type="button" id="saveButton" onclick="SaveButtonParam()" value="Добавить строку">  
-			<input type="button" id="canselButton" onclick="CanselButtonParam()" value="Отмена"></a>
+            Г‡Г­Г Г·ГҐГ­ГЁГҐ: <input id="NewValue" type="text" placeholder="Г‡Г­Г Г·ГҐГ­ГЁГҐ"></p>
+            <a><input type="button" id="saveButton" onclick="SaveButtonParam()" value="Г„Г®ГЎГ ГўГЁГІГј Г±ГІГ°Г®ГЄГі">  
+			<input type="button" id="canselButton" onclick="CanselButtonParam()" value="ГЋГІГ¬ГҐГ­Г "></a>
         </form>
 		</center>
     </div>
