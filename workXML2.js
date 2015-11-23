@@ -64,14 +64,10 @@ function paramTypeValue(type, value){
         case 'Boolean':
             var checkbox = "";
             if (value === "True") 
-            {
+            
                 checkbox = "checked";
-            }
-             if (!(value === "True")&& checkbox.length!==0))  
-             {
-             	alert("At least one checkbox should be checked");
-             	return;
-             }
+            
+           
             return stringwithValue + "<input oninput=\'setelementValue(this, this.parentNode, false)\' type=\'checkbox\'" + checkbox + "/>";
     }
 }
