@@ -71,7 +71,7 @@ function paramTypeValue(type, value){
 
 //The function that define from the XML file type of the parameters.
 // Type: boolean - true or false, number (int32) or text (string).
-function setelementValue(child_node, parent_node, is_this_number){
+function setelementValue(child_node, parent_node, isNumber){
     if (parent_node.getAttribute("type") == "Boolean")
     {   if( child_node.checked )
             parent_node.setAttribute('value', "True");
@@ -79,12 +79,24 @@ function setelementValue(child_node, parent_node, is_this_number){
             parent_node.setAttribute('value', "False");
     }
     else
-    {   if( is_this_number == true)
-        {// /-?[1-9][0-9]*$/ is this type - number
-            if (!(/-?[1-9][0-9]*$/.test(child_node.value)))
-            {
-                child_node.value = "";
+    {   if( isNumber == true)
+        {
+            if (!(/\-?[1-9][0-9]*$/.test(child_node.value))) {
+                if (!(child_node.value == "") && !(child_node.value == "-"))
+                    child_node.value = parent_node.getAttribute('value');
             }
+            else
+            {
+                if ((/\d+-\d/).test(child_node.value))
+                {
+                    child_node.value = parent_node.getAttribute('value');
+                }
+                if ((/--/).test(child_node.value))
+                {
+                    child_node.value = child_node.value.replace("--", "-");
+                }
+            }
+
         }
         parent_node.setAttribute('value', child_node.value);
     }
