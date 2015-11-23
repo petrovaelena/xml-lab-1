@@ -63,8 +63,15 @@ function paramTypeValue(type, value){
             return stringwithValue + "<input oninput=\'setelementValue(this, this.parentNode, true); checkForNumber(this, this.parentNode, true)\' type=\'text\' value=" + value + " />";
         case 'Boolean':
             var checkbox = "";
-            if (value === "True" )
+            if (value === "True") 
+            {
                 checkbox = "checked";
+            }
+             if (!(value === "True")&& checkbox.length!==0))  
+             {
+             	alert("At least one checkbox should be checked");
+             	return;
+             }
             return stringwithValue + "<input oninput=\'setelementValue(this, this.parentNode, false)\' type=\'checkbox\'" + checkbox + "/>";
     }
 }
