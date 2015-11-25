@@ -74,20 +74,26 @@ function paramTypeValue(type, value){
 
 //The function that define from the XML file type of the parameters.
 // Type: boolean - true or false, number (int32) or text (string).
-function setelementValue(child_node, parent_node, isNumber){
+function setElementValue(child_node, parent_node, isNumber)
+{
     if (parent_node.getAttribute("type") == "Boolean")
-    {   if( child_node.checked )
+    {
+        if( child_node.checked )
             parent_node.setAttribute('value', "True");
         else
             parent_node.setAttribute('value', "False");
     }
     else
-    {   if( isNumber == true)
+    {
+        if( isNumber == true)
         {
-            if (!(/\-?[1-9][0-9]*$/.test(child_node.value))) {
-                if (!(child_node.value == "") && !(child_node.value == "-"))
+			var isError = false;
+            if (!(/(^([+-]?)([1-9]+?)[0-9]*$)|^0$/.test(child_node.value))) {
+                if (!(child_node.value == "") && !(child_node.value == "-") && !(child_node.value == "0")){
                     child_node.value = parent_node.getAttribute('value');
-            }
+					isError = true;
+				}
+			}
             else
             {
                 if ((/\d+-\d/).test(child_node.value))
@@ -95,12 +101,19 @@ function setelementValue(child_node, parent_node, isNumber){
                     child_node.value = parent_node.getAttribute('value');
                 }
                 if ((/--/).test(child_node.value))
-                {
+                  {
                     child_node.value = child_node.value.replace("--", "-");
-                }
+				}
+				isError = false;
             }
-
+			var max = 2147483647;
+			var min = -2147483648;
+			if (child_node.value > max) { child_node.value = parent_node.getAttribute('value'); isError = true; }
+		    if (child_node.value < min) { child_node.value = parent_node.getAttribute('value'); isError = true; }
+			if (!isError) child_node.style.backgroundColor='';
+				else child_node.style.backgroundColor='red';
         }
+	
         parent_node.setAttribute('value', child_node.value);
     }
 }
@@ -147,10 +160,19 @@ function checking(field){
     // value
     if (field.value == "Int32")
     {
-        if (!(/(^([+-]?)([1-9]+?)[0-9]*$)|^0$/.test(field.value)))
-        {   document.getElementById("NewDescription").value = "";
+        if (/^0/.test(field.value))
+		{ 	
+			document.getElementById("NewDescription").value = "0";
             result = true;
-        }
+		} 
+		else
+			if (!(/(^([+-]?)([1-9]+?)[0-9]*$)|^0$/.test(field.value)))
+			{
+				var isError = true;
+				if (!child_node.value == "")
+					child_node.value = parent_node.getAttribute('value');
+				result = true;
+			}
     }
     return result;
 }
